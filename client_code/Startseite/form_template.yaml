@@ -1,5 +1,26 @@
 components:
-- components: []
+- components:
+  - layout_properties: {grid_position: 'YAGLBY,CRYORT'}
+    name: Drop_Down_Menu_Abteilungen
+    properties:
+      include_placeholder: true
+      items: [Neurologie, Kardiologie, Innere Medizin]
+      placeholder: Bitte wählen Sie eine Abteilung aus
+    type: DropDown
+  - components:
+    - name: repeating_panel_1
+      properties: {item_template: Startseite.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'DPENJR,FHSAKZ'}
+    name: data_grid_1
+    properties:
+      columns:
+      - {data_key: column_1, id: JKSDUP, title: Arzt}
+      - {data_key: column_2, id: VJQQOR, title: Pflegekraft}
+      - {data_key: column_3, id: OJLQEN, title: Patient}
+      - {data_key: column_1, id: GCOVXX, title: Behandlung}
+      - {data_key: column_1, id: XYEIGU, title: Medikament}
+    type: DataGrid
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}
