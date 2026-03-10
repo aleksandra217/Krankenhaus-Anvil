@@ -27,11 +27,12 @@ class Startseite(StartseiteTemplate):
   def Drop_Down_Menu_Abteilungen_change(self, **event_args):
     """This method is called when an item is selected"""
     abteilung_id = self.Drop_Down_Menu_Abteilungen.selected_value
-    print("ID:", abteilung_id)
+    #print("ID:", abteilung_id)
     if abteilung_id is None:
-      self.data_grid_1.visible = False
+      self.data_grid_1.clear()
       self.repeating_panel_1.items = []
       return
+    self.data_grid_1.clear()
     self.data_grid_1.visible = True
 
   
@@ -82,25 +83,25 @@ class Startseite(StartseiteTemplate):
     datenanzeigen = anvil.server.call('query_database_dict', sql)
     print("SQL:", datenanzeigen)
     self.repeating_panel_1.items = datenanzeigen
+   
+    header = GridPanel()
+    header.add_component(Label(text="Arzt", bold=True),col_xs=0, width_xs=3)
+    header.add_component(Label(text="Pflegekraft", bold=True),col_xs=3, width_xs=2)
+    header.add_component(Label(text="Patient", bold=True),col_xs=5, width_xs=2)
+    header.add_component(Label(text="Behandlung", bold=True),col_xs=7, width_xs=3)
+    header.add_component(Label(text="Medikament", bold=True),col_xs=10, width_xs=2)
+    self.data_grid_1.add_component(header)
 
-  header = GridPanel()
-  header.add_component(Label(text="Arzt", bold=True),col_xs=0, width_xs=3)
-  header.add_component(Label(text="Pflegekraft", bold=True),col_xs=3, width_xs=2)
-  header.add_component(Label(text="Patient", bold=True),col_xs=5, width_xs=2)
-  header.add_component(Label(text="Behandlung", bold=True),col_xs=7, width_xs=3)
-  header.add_component(Label(text="Medikament", bold=True),col_xs=10, width_xs=2)
 
-  self.data_grid_1.add_component(header)
-
-  for row in datenanzeigen:
-    zeile = GridPanel()
-    zeile.add_component(Label(text=row[0]), col_xs=0, width_xs=3)
-    zeile.add_component(Label(text=row[1]), col_xs=3, width_xs=2)
-    zeile.add_component(Label(text=row[2]), col_xs=5 ,width_xs=2)
-    zeile.add_component(Label(text=row[3]), col_xs=7, width_xs=3)
-    zeile.add_component(Label(text=row[4]), col_xs=10, width_xs=2) 
+    for row in datenanzeigen:
+      zeile = GridPanel()
+      zeile.add_component(Label(text=row['NamedesArztes']), col_xs=0, width_xs=3)
+      zeile.add_component(Label(text=row['NamedesPflegekraftes']), col_xs=3, width_xs=2)
+      zeile.add_component(Label(text=row['NamedesPatienten']), col_xs=5 ,width_xs=2)
+      zeile.add_component(Label(text=row['Behandlungsart']), col_xs=7, width_xs=3)
+      zeile.add_component(Label(text=row['NamedesMedikamentes']), col_xs=10, width_xs=2) 
   
-    self.data_grid_1.add_component(zeile)
+      self.data_grid_1.add_component(zeile)
   # print(self.Drop_Down_Menu_Abteilungen.selected_value)
 
     # :abteilung_id. :-> ist der SChutz vor der SQL-Injection.
