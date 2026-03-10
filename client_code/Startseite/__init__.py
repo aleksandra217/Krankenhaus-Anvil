@@ -18,4 +18,10 @@ class Startseite(StartseiteTemplate):
     """This method is called when an item is selected"""
     if self.Drop_Down_Menu_Abteilungen.selected_value is not None:
       self.data_grid_1.visible = True;
+  # print(self.Drop_Down_Menu_Abteilungen.selected_value)
+
+    sql= f"""
+            ab.Abteilungs
+          
+  """
     
