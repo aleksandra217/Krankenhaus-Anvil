@@ -32,5 +32,7 @@ def query_database_dict(query: str):
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
   return [dict(row) for row in result]
+ 
+
 
 
