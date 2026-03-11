@@ -1,0 +1,32 @@
+components:
+- components:
+  - components:
+    - name: repeating_panel_1
+      properties: {item_template: Startseite.Medikamente.RowTemplate2}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'XIOABW,AAOYNR'}
+    name: data_grid_1
+    properties:
+      columns:
+      - {data_key: medikament, id: JKSDUP, title: Medikament}
+      - {data_key: name_des_herstellers, id: VJQQOR, title: Name des Herstellers}
+      - {data_key: adresse_des_herstellers, expand: false, id: OJLQEN, title: Adresse des Herstellers, width: 174.55548095703125}
+      - {data_key: lagerort, expand: false, id: PDOAHU, title: Lagerort, width: 126.7777099609375}
+      - {data_key: lagerkapazität, id: HHQCRH, title: Lagerkapazität}
+    type: DataGrid
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: Medikamenteninformationen}
+  type: Label
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

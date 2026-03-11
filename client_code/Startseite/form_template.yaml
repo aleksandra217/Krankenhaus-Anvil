@@ -5,7 +5,7 @@ components:
     name: Drop_Down_Menu_Abteilungen
     properties:
       include_placeholder: true
-      items: [Neurologie, Kardiologie, Innere Medizin]
+      items: [Neurologie, Kardiologie, Innere Medizin, Allgemeinchirurgie, Anästesiologie, HNO]
       placeholder: Bitte wählen Sie eine Abteilung aus
     type: DropDown
   - components:
@@ -24,6 +24,11 @@ components:
       - {data_key: dosierung, id: UNDZVY, title: Dosierung}
       visible: false
     type: DataGrid
+  - event_bindings: {}
+    layout_properties: {grid_position: 'KFVAKG,DSOWIG'}
+    name: InformationenMedikament
+    properties: {text: Informationen Medikamente}
+    type: Button
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}

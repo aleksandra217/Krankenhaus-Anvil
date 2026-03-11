@@ -34,7 +34,10 @@ class Startseite(StartseiteTemplate):
     if abteilung_id is None:
       self.data_grid_1.clear()
       self.repeating_panel_1.items = []
+      self.InformationenMedikament.visible = False
       return
+    
+      
     #datenanzeigen = anvil.server.call('query_database_dict', sql)
     #self.repeating_panel_1.items = datenanzeigen
 
@@ -43,6 +46,7 @@ class Startseite(StartseiteTemplate):
       
     self.data_grid_1.clear()
     self.data_grid_1.visible = True
+    self.InformationenMedikament.visible = True
 
   
 
@@ -100,6 +104,7 @@ class Startseite(StartseiteTemplate):
     header.add_component(Label(text="Behandlung", bold=True),col_xs=6, width_xs=2)
     header.add_component(Label(text="Medikament", bold=True),col_xs=8, width_xs=2)
     header.add_component(Label(text="Dosierung", bold=True), col_xs=10, width_xs=2)
+    #header.add_component(Label(text="Informationen Medikament", bold=True), col_xs=11, width_xs=1)
     self.data_grid_1.add_component(header)
 
 
@@ -111,7 +116,7 @@ class Startseite(StartseiteTemplate):
       zeile.add_component(Label(text=row['Behandlungsart']), col_xs=6, width_xs=2)
       zeile.add_component(Label(text=row['NamedesMedikamentes']), col_xs=8, width_xs=2) 
       zeile.add_component(Label(text=row['DosierungdesMedikamentes']),col_xs=10, width_xs=2)
-
+      #zeile.add_component(Label(text=row.get('Informationen Medikament','')),col_xs=11, width_xs=1)
       self.data_grid_1.add_component(zeile)
       #self.data_grid_1.columns = [
         #{"id": "arzt", "title": "Arzt", "data_key" :"NamedesArztes", "width": "10%"},
@@ -133,3 +138,8 @@ class Startseite(StartseiteTemplate):
     # :abteilung_id. :-> ist der SChutz vor der SQL-Injection.
     
     #self.repeating_panel_1.items = anvil.server.call('query_database_dict', sql)
+
+  @handle("InformationenMedikament", "click")
+  def InformationenMedikament_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite.Medikamente', row_dict=self.item)
