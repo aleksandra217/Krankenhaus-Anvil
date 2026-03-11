@@ -16,11 +16,12 @@ components:
     name: data_grid_1
     properties:
       columns:
-      - {data_key: column_1, id: JKSDUP, title: Arzt}
-      - {data_key: column_2, id: VJQQOR, title: Pflegekraft}
-      - {data_key: column_3, id: OJLQEN, title: Patient}
-      - {data_key: column_1, id: GCOVXX, title: Behandlung}
-      - {data_key: column_1, id: XYEIGU, title: Medikament}
+      - {data_key: arzt, expand: false, id: JKSDUP, title: Arzt, width: 87}
+      - {data_key: pflegekraft, id: VJQQOR, title: Pflegekraft}
+      - {data_key: patient, id: OJLQEN, title: Patient}
+      - {data_key: behandlung, id: GCOVXX, title: Behandlung}
+      - {data_key: medikament, expand: false, id: XYEIGU, title: Medikament, width: 111.5}
+      - {data_key: dosierung, id: UNDZVY, title: Dosierung}
       visible: false
     type: DataGrid
   layout_properties: {slot: default}

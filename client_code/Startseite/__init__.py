@@ -9,15 +9,18 @@ from anvil.tables import app_tables
 class Startseite(StartseiteTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
-    self.init_components(**properties)
+    self.init_components(**properties),
 
     # Any code you write here will run before the form opens.
     abteilungen = anvil.server.call('query_database', "SELECT AbteilungsId, Name FROM Abteilung")
     self.Drop_Down_Menu_Abteilungen.items = [
       (row[1], row[0]) for row in abteilungen]
-    
-    if self.Drop_Down_Menu_Abteilungen.items:
-      self.Drop_Down_Menu_Abteilungen.selected_value = self.Drop_Down_Menu_Abteilungen.items[0][1]
+
+    #if self.Drop_Down_Menu_Abteilungen.items:
+      #self.Drop_Down_Menu_Abteilungen.selected_value = self.Drop_Down_Menu_Abteilungen.items[0][1]
+
+
+
       
     self.Drop_Down_Menu_Abteilungen_change()
 
@@ -32,6 +35,12 @@ class Startseite(StartseiteTemplate):
       self.data_grid_1.clear()
       self.repeating_panel_1.items = []
       return
+    #datenanzeigen = anvil.server.call('query_database_dict', sql)
+    #self.repeating_panel_1.items = datenanzeigen
+
+  
+
+      
     self.data_grid_1.clear()
     self.data_grid_1.visible = True
 
@@ -85,23 +94,40 @@ class Startseite(StartseiteTemplate):
     self.repeating_panel_1.items = datenanzeigen
    
     header = GridPanel()
-    header.add_component(Label(text="Arzt", bold=True),col_xs=0, width_xs=3)
-    header.add_component(Label(text="Pflegekraft", bold=True),col_xs=3, width_xs=2)
-    header.add_component(Label(text="Patient", bold=True),col_xs=5, width_xs=2)
-    header.add_component(Label(text="Behandlung", bold=True),col_xs=7, width_xs=3)
-    header.add_component(Label(text="Medikament", bold=True),col_xs=10, width_xs=2)
+    header.add_component(Label(text="Arzt", bold=True),col_xs=0, width_xs=2)
+    header.add_component(Label(text="Pflegekraft", bold=True),col_xs=2, width_xs=2)
+    header.add_component(Label(text="Patient", bold=True),col_xs=4, width_xs=2)
+    header.add_component(Label(text="Behandlung", bold=True),col_xs=6, width_xs=2)
+    header.add_component(Label(text="Medikament", bold=True),col_xs=8, width_xs=2)
+    header.add_component(Label(text="Dosierung", bold=True), col_xs=10, width_xs=2)
     self.data_grid_1.add_component(header)
 
 
     for row in datenanzeigen:
       zeile = GridPanel()
-      zeile.add_component(Label(text=row['NamedesArztes']), col_xs=0, width_xs=3)
-      zeile.add_component(Label(text=row['NamedesPflegekraftes']), col_xs=3, width_xs=2)
-      zeile.add_component(Label(text=row['NamedesPatienten']), col_xs=5 ,width_xs=2)
-      zeile.add_component(Label(text=row['Behandlungsart']), col_xs=7, width_xs=3)
-      zeile.add_component(Label(text=row['NamedesMedikamentes']), col_xs=10, width_xs=2) 
-  
+      zeile.add_component(Label(text=row['NamedesArztes']), col_xs=0, width_xs=2)
+      zeile.add_component(Label(text=row['NamedesPflegekraftes']), col_xs=2, width_xs=2)
+      zeile.add_component(Label(text=row['NamedesPatienten']), col_xs=4 ,width_xs=2)
+      zeile.add_component(Label(text=row['Behandlungsart']), col_xs=6, width_xs=2)
+      zeile.add_component(Label(text=row['NamedesMedikamentes']), col_xs=8, width_xs=2) 
+      zeile.add_component(Label(text=row['DosierungdesMedikamentes']),col_xs=10, width_xs=2)
+
       self.data_grid_1.add_component(zeile)
+      #self.data_grid_1.columns = [
+        #{"id": "arzt", "title": "Arzt", "data_key" :"NamedesArztes", "width": "10%"},
+        #{"id": "pflege", "title": "Pflegekraft", "data_key": "NamedesPflegekraftes", "width": "10%"},
+        #{"id": "patient", "title": "Patient", "data_key" :"NamedesPatientes", "width": "10%"},
+        #{"id": "behandlung", "title": "Behandlung", "data_key" :"Behanldungart", "width": "10%"},
+        #{"id": "medikament", "title": "Medikament", "data_key" :"NamedesMedikamentes", "width": "10%"},
+        #{"id": "dosierung", "title": "Dosierung", "data_key" :"DosierungdesMedikamentes", "width": "10%"},
+      #]
+    
+
+    #self.data_grid_1
+     
+    self.repeating_panel_1.items = datenanzeigen
+
+    
   # print(self.Drop_Down_Menu_Abteilungen.selected_value)
 
     # :abteilung_id. :-> ist der SChutz vor der SQL-Injection.
