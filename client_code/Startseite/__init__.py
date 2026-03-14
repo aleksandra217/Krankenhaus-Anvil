@@ -9,7 +9,7 @@ from anvil.tables import app_tables
 class Startseite(StartseiteTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
-    self.init_components(**properties),
+    self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
     abteilungen = anvil.server.call('query_database', "SELECT AbteilungsId, Name FROM Abteilung")
@@ -51,7 +51,7 @@ class Startseite(StartseiteTemplate):
   
 
     sql= f"""
-            SELECT
+            SELECT DISTINCT
             ab.AbteilungsId,
             ab.Name AS Abteilungsname,
             ab.Stockwerk AS Stockwerk,
@@ -90,7 +90,8 @@ class Startseite(StartseiteTemplate):
         LEFT JOIN Lager l on l.LagerId = l_m.LagerId
         LEFT JOIN Hersteller_Medikament h_m ON h_m.MedikamentenId = m.MedikamentenId
         LEFT JOIN Hersteller h ON h.HerstellerId = h_m.HerstellerId
-        WHERE ab.AbteilungsId = {abteilung_id};
+        WHERE ab.AbteilungsId = {abteilung_id}
+        AND b.Behandlungsart IS NOT NULL;
     """
 
     datenanzeigen = anvil.server.call('query_database_dict', sql)
@@ -142,4 +143,9 @@ class Startseite(StartseiteTemplate):
   @handle("InformationenMedikament", "click")
   def InformationenMedikament_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('Startseite.Medikamente', row_dict=self.item)
+    open_form('Startseite.Medikamente', row_dict=self.item, abteilungs_id=self.Drop_Down_Menu_Abteilungen.selected_value)
+  
+  @handle("zurueck", "click")
+  def zurueck_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite')

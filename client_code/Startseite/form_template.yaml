@@ -29,6 +29,11 @@ components:
     name: InformationenMedikament
     properties: {text: Informationen Medikamente}
     type: Button
+  - event_bindings: {}
+    layout_properties: {grid_position: 'FCAHSF,FTHXBT'}
+    name: zurueck
+    properties: {text: Zurück}
+    type: Button
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}
