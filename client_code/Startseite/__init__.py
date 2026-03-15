@@ -48,11 +48,13 @@ class Startseite(StartseiteTemplate):
     self.data_grid_1.visible = True
     self.InformationenMedikament.visible = True
 
-  
+    abteilung_id = self.Drop_Down_Menu_Abteilungen.selected_value
+    
+
 
     sql= f"""
             SELECT DISTINCT
-            ab.AbteilungsId,
+           ab.AbteilungsId,
             ab.Name AS Abteilungsname,
             ab.Stockwerk AS Stockwerk,
             ar.ArztId,
