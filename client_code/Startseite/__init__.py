@@ -74,7 +74,7 @@ class Startseite(StartseiteTemplate):
             m.Dosierung AS DosierungdesMedikamentes,
             l.LagerId,
             l.Ort AS OrtdesLagers,
-            l.Kapazität AS Kapazität,
+            l.Kapazitaet AS Kapazitaet,
             h.HerstellerId,
             h.Name AS NamedesHerstellers,
             h.Adresse AS AdressedesHerstellers
@@ -151,3 +151,8 @@ class Startseite(StartseiteTemplate):
   def zurueck_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Startseite')
+
+  @handle("diagramm_1", "click")
+  def diagramm_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite.Dashboard_1')

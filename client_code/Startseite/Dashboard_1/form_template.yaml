@@ -1,5 +1,19 @@
 components:
-- layout_properties: {slot: default}
+- components:
+  - layout_properties: {grid_position: 'HACUOF,CHDXPI'}
+    name: label_1
+    properties: {text: Patientenübersicht pro Abteilung - Diagramm}
+    type: Label
+  - components:
+    - layout_properties: {grid_position: 'KSOPRQ,QXJYQS'}
+      name: plot_patienten
+      properties: {}
+      type: Plot
+    layout_properties: {grid_position: 'LLGZNF,FZYBOZ'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  layout_properties: {slot: default}
   name: content_panel
   properties: {}
   type: ColumnPanel
@@ -7,6 +21,10 @@ components:
   name: navbar_links
   properties: {}
   type: FlowPanel
+- layout_properties: {slot: title}
+  name: patientenuebersicht_pro_abteilung
+  properties: {text: Patientenübersich pro Abteilung}
+  type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

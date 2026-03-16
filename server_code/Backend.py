@@ -20,18 +20,31 @@ import sqlite3
 
 @anvil.server.callable
 def query_database(query: str):
-  with sqlite3.connect(data_files["krankenhaus_voll_mit_behandlungen.db"]) as conn:
+  with sqlite3.connect(data_files["krankenhaus_db.db"]) as conn:
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
   return result
 
 @anvil.server.callable
 def query_database_dict(query: str):
-  with sqlite3.connect(data_files["krankenhaus_voll_mit_behandlungen.db"]) as conn:
+  with sqlite3.connect(data_files["krankenhaus_db.db"]) as conn:
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     result = cur.execute(query).fetchall()
   return [dict(row) for row in result]
+
+@anvil.server.callable
+def patienten_pro_abteilung_anzeigen():
+  sql = """
+        SELECT 
+        Abteilung.Name AS Abteilungsname, COUNT(Patient.PatientenId) AS Anzahl
+        FROM Abteilung 
+        LEFT JOIN Patient ON Patient.AbteilungsId = Abteilung.AbteilungsId
+        GROUP BY Abteilung.AbteilungsId, Abteilung.Name
+        ORDER BY Abteilung.AbteilungsId
+  """
+
+  return query_database_dict(sql)
  
 
 
