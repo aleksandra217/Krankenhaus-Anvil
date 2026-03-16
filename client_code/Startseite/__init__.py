@@ -54,7 +54,7 @@ class Startseite(StartseiteTemplate):
 
     sql= f"""
             SELECT DISTINCT
-           ab.AbteilungsId,
+            ab.AbteilungsId,
             ab.Name AS Abteilungsname,
             ab.Stockwerk AS Stockwerk,
             ar.ArztId,
