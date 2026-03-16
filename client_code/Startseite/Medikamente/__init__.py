@@ -21,7 +21,7 @@ class Medikamente(MedikamenteTemplate):
             h.Name AS Herstellername,
             h.Adresse AS Herstelleradresse,
             l.Ort AS Lagerort,
-            l.Kapazität AS Lagerkapazität
+            l.Kapazitaet AS Lagerkapazitaet
           FROM Patient p
           JOIN Patient_Medikament p_m ON p.PatientenId =p_m.PatientenId
           JOIN Medikament m ON p_m.MedikamentenId = m.MedikamentenId
@@ -53,7 +53,7 @@ class Medikamente(MedikamenteTemplate):
       zeile.add_component(Label(text=row['Herstellername']), col_xs=2, width_xs=2)
       zeile.add_component(Label(text=row['Herstelleradresse']), col_xs=4 ,width_xs=2)
       zeile.add_component(Label(text=row['Lagerort']), col_xs=6, width_xs=2)
-      zeile.add_component(Label(text=row['Lagerkapazität']), col_xs=8, width_xs=2) 
+      zeile.add_component(Label(text=row['Lagerkapazitaet']), col_xs=8, width_xs=2) 
       #zeile.add_component(Label(text=row.get('Informationen Medikament','')),col_xs=11, width_xs=1)
       self.data_grid_1.add_component(zeile)
     self.repeating_panel_1.items = datenanzeigen
