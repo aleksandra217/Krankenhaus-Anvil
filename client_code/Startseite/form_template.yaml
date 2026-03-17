@@ -39,6 +39,11 @@ components:
     name: diagramm_1
     properties: {text: Diagramm - Patienten pro Abteilung}
     type: Button
+  - event_bindings: {}
+    layout_properties: {grid_position: 'NAFRPZ,QSVCGX'}
+    name: diagramm_2
+    properties: {text: Diagramm - Medikamentenbestand}
+    type: Button
   layout_properties: {slot: default}
   name: content_panel
   properties: {col_widths: '{}'}

@@ -45,6 +45,25 @@ def patienten_pro_abteilung_anzeigen():
   """
 
   return query_database_dict(sql)
+
+@anvil.server.callable
+def medikamentenbestand():
+    sql ="""
+      SELECT
+      m.Name AS medikament,
+      l.Ort AS Lagerort,
+      l.Kapazitaet AS max_kapazitaet,
+      COUNT(l_m.MedikamentenId) AS aktueller_bestand,
+      ROUND (COUNT(l_m.MedikamentenId) * 100.0 / l.Kapazitaet, 2) AS prozent
+    FROM Medikament m
+    LEFT JOIN Lager_Medikament l_m ON m.MedikamentenId = l_m.MedikamentenId
+    LEFT JOIN Lager l ON l.LagerId = l_m.LagerId
+    GROUP BY m.MedikamentenId, l.LagerId
+    ORDER BY m.MedikamentenId
+    """
+    
+
+    return query_database_dict(sql)
  
 
 

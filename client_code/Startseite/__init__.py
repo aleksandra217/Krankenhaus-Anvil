@@ -156,3 +156,8 @@ class Startseite(StartseiteTemplate):
   def diagramm_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('Startseite.Dashboard_1')
+
+  @handle("diagramm_2", "click")
+  def diagramm_2_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite.Dashboard_2')
