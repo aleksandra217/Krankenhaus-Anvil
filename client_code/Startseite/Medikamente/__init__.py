@@ -12,6 +12,7 @@ class Medikamente(MedikamenteTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.data_grid_1.clear()
+    self.zurueck.background = "black"
     # Any code you write here will run before the form opens.
 
     #abteilungs_id = 1
@@ -35,7 +36,7 @@ class Medikamente(MedikamenteTemplate):
   
     datenanzeigen = anvil.server.call('query_database_dict', sql)
     print("SQL:", datenanzeigen)
-    #self.repeating_panel_1.items = datenanzeigen
+  
 
     header = GridPanel()
     header.add_component(Label(text="Medikament", bold=True),col_xs=0, width_xs=2)
@@ -43,7 +44,6 @@ class Medikamente(MedikamenteTemplate):
     header.add_component(Label(text="Adresse des Herstellers", bold=True),col_xs=4, width_xs=2)
     header.add_component(Label(text="Lagerort", bold=True),col_xs=6, width_xs=2)
     header.add_component(Label(text="Lagerkapazität", bold=True),col_xs=8, width_xs=2)
-    #header.add_component(Label(text="Informationen Medikament", bold=True), col_xs=11, width_xs=1)
     self.data_grid_1.add_component(header)
   
   
@@ -54,29 +54,9 @@ class Medikamente(MedikamenteTemplate):
       zeile.add_component(Label(text=row['Herstelleradresse']), col_xs=4 ,width_xs=2)
       zeile.add_component(Label(text=row['Lagerort']), col_xs=6, width_xs=2)
       zeile.add_component(Label(text=row['Lagerkapazitaet']), col_xs=8, width_xs=2) 
-      #zeile.add_component(Label(text=row.get('Informationen Medikament','')),col_xs=11, width_xs=1)
       self.data_grid_1.add_component(zeile)
     self.repeating_panel_1.items = datenanzeigen
-      #self.data_grid_1.columns = [
-      #{"id": "arzt", "title": "Arzt", "data_key" :"NamedesArztes", "width": "10%"},
-    #{"id": "pflege", "title": "Pflegekraft", "data_key": "NamedesPflegekraftes", "width": "10%"},
-    #{"id": "patient", "title": "Patient", "data_key" :"NamedesPatientes", "width": "10%"},
-    #{"id": "behandlung", "title": "Behandlung", "data_key" :"Behanldungart", "width": "10%"},
-    #{"id": "medikament", "title": "Medikament", "data_key" :"NamedesMedikamentes", "width": "10%"},
-    #{"id": "dosierung", "title": "Dosierung", "data_key" :"DosierungdesMedikamentes", "width": "10%"},
-    #]
-  
-  
-  #self.data_grid_1
-  
-  
-  
-  
-  # print(self.Drop_Down_Menu_Abteilungen.selected_value)
-  
-    # :abteilung_id. :-> ist der SChutz vor der SQL-Injection.
-  
-    #self.repeating_panel_1.items = anvil.server.call('query_database_dict', sql)
+     
 
   @handle("zurueck", "click")
   def zurueck_click(self, **event_args):

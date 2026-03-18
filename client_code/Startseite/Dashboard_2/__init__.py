@@ -11,11 +11,11 @@ class Dashboard_2(Dashboard_2Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    self.zurueck.background = "black"
     daten_holen = anvil.server.call('medikamentenbestand')
 
     x_labels = [row['medikament'] for row in daten_holen]
-    y_values = [row['prozent'] for row in daten_holen]
+    y_values = [row['aktueller_bestand'] for row in daten_holen]
 
     farben_balken = ["blue", "red", "green", "yellow", "orange", "lighblue", "grey"]
     self.plot_1.data = [{
@@ -29,10 +29,10 @@ class Dashboard_2(Dashboard_2Template):
 
     
     self.plot_1.layout = {
-      'title': 'Lagerbestand der Medikamente (%)',
+      'title': 'Lagerbestand der Medikamente (Stück)',
       'xaxis': {'title': 'Medikament'},
-      'yaxis': {'title': 'Befüllung in %'},
-      'y_axis_range': [0,100]
+      'yaxis': {'title': 'Befüllung in Stück'},
+      
     }
 
   @handle("zurueck", "click")

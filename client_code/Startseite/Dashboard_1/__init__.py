@@ -11,7 +11,7 @@ class Dashboard_1(Dashboard_1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    
+    self.zurueck.background = "black"
 
     # Any code you write here will run before the form opens.
     daten_holen = anvil.server.call('patienten_pro_abteilung_anzeigen')

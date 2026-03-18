@@ -16,9 +16,7 @@ class Startseite(StartseiteTemplate):
     self.Drop_Down_Menu_Abteilungen.items = [
       (row[1], row[0]) for row in abteilungen]
 
-    #if self.Drop_Down_Menu_Abteilungen.items:
-      #self.Drop_Down_Menu_Abteilungen.selected_value = self.Drop_Down_Menu_Abteilungen.items[0][1]
-
+    
 
 
     self.zurueck.visible = False;
@@ -36,11 +34,10 @@ class Startseite(StartseiteTemplate):
       self.repeating_panel_1.items = []
       self.InformationenMedikament.visible = False
       return
-    self.zurueck.visible = True;
+    self.zurueck.visible = True
     
       
-    #datenanzeigen = anvil.server.call('query_database_dict', sql)
-    #self.repeating_panel_1.items = datenanzeigen
+    
 
   
 
@@ -127,28 +124,16 @@ class Startseite(StartseiteTemplate):
       zeile.add_component(Label(text=row['Behandlungsart']), col_xs=6, width_xs=2)
       zeile.add_component(Label(text=row['NamedesMedikamentes']), col_xs=8, width_xs=2) 
       zeile.add_component(Label(text=row['DosierungdesMedikamentes']),col_xs=10, width_xs=2)
-      #zeile.add_component(Label(text=row.get('Informationen Medikament','')),col_xs=11, width_xs=1)
       self.data_grid_1.add_component(zeile)
-      #self.data_grid_1.columns = [
-        #{"id": "arzt", "title": "Arzt", "data_key" :"NamedesArztes", "width": "10%"},
-        #{"id": "pflege", "title": "Pflegekraft", "data_key": "NamedesPflegekraftes", "width": "10%"},
-        #{"id": "patient", "title": "Patient", "data_key" :"NamedesPatientes", "width": "10%"},
-        #{"id": "behandlung", "title": "Behandlung", "data_key" :"Behanldungart", "width": "10%"},
-        #{"id": "medikament", "title": "Medikament", "data_key" :"NamedesMedikamentes", "width": "10%"},
-        #{"id": "dosierung", "title": "Dosierung", "data_key" :"DosierungdesMedikamentes", "width": "10%"},
-      #]
+    
     
 
-    #self.data_grid_1
+  
      
     self.repeating_panel_1.items = datenanzeigen
 
     
-  # print(self.Drop_Down_Menu_Abteilungen.selected_value)
-
-    # :abteilung_id. :-> ist der SChutz vor der SQL-Injection.
-    
-    #self.repeating_panel_1.items = anvil.server.call('query_database_dict', sql)
+  
 
   @handle("InformationenMedikament", "click")
   def InformationenMedikament_click(self, **event_args):
