@@ -28,3 +28,8 @@ class Dashboard_1(Dashboard_1Template):
       'xaxis': {'title': 'Abteilung'},
       'yaxis': {'title': 'Anzahl Patienten'}
     }
+
+  @handle("zurueck", "click")
+  def zurueck_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite')

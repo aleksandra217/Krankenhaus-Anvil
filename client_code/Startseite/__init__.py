@@ -48,9 +48,9 @@ class Startseite(StartseiteTemplate):
     self.data_grid_1.clear()
     self.data_grid_1.visible = True
     self.InformationenMedikament.visible = True
-
     abteilung_id = self.Drop_Down_Menu_Abteilungen.selected_value
-    
+   
+
 
 
     sql= f"""
@@ -97,9 +97,13 @@ class Startseite(StartseiteTemplate):
         AND b.Behandlungsart IS NOT NULL;
     """
 
+
+    
     datenanzeigen = anvil.server.call('query_database_dict', sql)
     print("SQL:", datenanzeigen)
     self.repeating_panel_1.items = datenanzeigen
+
+  
    
     header = GridPanel()
     header.add_component(Label(text="Arzt", bold=True),col_xs=0, width_xs=2)

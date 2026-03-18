@@ -29,3 +29,9 @@ class Dashboard_2(Dashboard_2Template):
       'yaxis': {'title': 'Befüllung in %'},
       'y_axis_range': [0,100]
     }
+
+  @handle("zurueck", "click")
+  def zurueck_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Startseite')
+
