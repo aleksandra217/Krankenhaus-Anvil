@@ -15,7 +15,7 @@ class Dashboard_1(Dashboard_1Template):
 
     # Any code you write here will run before the form opens.
     daten_holen = anvil.server.call('patienten_pro_abteilung_anzeigen')
-    farben_balken = ["blue", "red", "green", "yellow", "orange", "grey", "purple"]
+    farben_balken = ["A3C4F3",  "C6DFB9",  "F7C5CC",  "F9E79F",  "F0D9E0",  "C2E9FB", "FAD7A0"]
     x_labels = [row['Abteilungsname'] for row in daten_holen]
     y_values = [row['Anzahl'] for row in daten_holen]
     self.plot_patienten.data = [{

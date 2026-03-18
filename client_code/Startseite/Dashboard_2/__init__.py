@@ -17,7 +17,7 @@ class Dashboard_2(Dashboard_2Template):
     x_labels = [row['medikament'] for row in daten_holen]
     y_values = [row['aktueller_bestand'] for row in daten_holen]
 
-    farben_balken = ["blue", "red", "green", "yellow", "orange", "lighblue", "grey"]
+    farben_balken = ["FFD1DC",  "B5EAD7",  "FFDAC1",  "E2F0CB",  "C7CEEA",  "FBE7C6",  "D5A6BD"]
     self.plot_1.data = [{
       "x": x_labels,
       "y": y_values,
