@@ -21,7 +21,7 @@ class Startseite(StartseiteTemplate):
 
 
 
-      
+    self.zurueck.visible = False;
     self.Drop_Down_Menu_Abteilungen_change()
 
     
@@ -36,6 +36,7 @@ class Startseite(StartseiteTemplate):
       self.repeating_panel_1.items = []
       self.InformationenMedikament.visible = False
       return
+    self.zurueck.visible = True;
     
       
     #datenanzeigen = anvil.server.call('query_database_dict', sql)

@@ -1,6 +1,16 @@
 components:
 - components:
   - event_bindings: {}
+    layout_properties: {grid_position: 'QLBREF,EFWFMT'}
+    name: diagramm_1
+    properties: {text: Diagramm - Patienten pro Abteilung}
+    type: Button
+  - event_bindings: {}
+    layout_properties: {grid_position: 'FQFKUO,AQFYAF'}
+    name: diagramm_2
+    properties: {text: Diagramm - Medikamentenbestand}
+    type: Button
+  - event_bindings: {}
     layout_properties: {grid_position: 'YAGLBY,CRYORT'}
     name: Drop_Down_Menu_Abteilungen
     properties:
@@ -33,16 +43,6 @@ components:
     layout_properties: {grid_position: 'FCAHSF,FTHXBT'}
     name: zurueck
     properties: {text: Zurück}
-    type: Button
-  - event_bindings: {}
-    layout_properties: {grid_position: 'NBMNFD,KXPQPR'}
-    name: diagramm_1
-    properties: {text: Diagramm - Patienten pro Abteilung}
-    type: Button
-  - event_bindings: {}
-    layout_properties: {grid_position: 'NAFRPZ,QSVCGX'}
-    name: diagramm_2
-    properties: {text: Diagramm - Medikamentenbestand}
     type: Button
   layout_properties: {slot: default}
   name: content_panel
