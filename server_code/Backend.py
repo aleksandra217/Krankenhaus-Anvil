@@ -50,15 +50,15 @@ def patienten_pro_abteilung_anzeigen():
 def medikamentenbestand():
     sql ="""
       SELECT
-    m.Name AS medikament,
-    l.Ort AS Lagerort,
-    l.Kapazitaet AS max_kapazitaet,
-    COUNT(l_m.MedikamentenId) AS aktueller_bestand
-FROM Medikament m
-LEFT JOIN Lager_Medikament l_m ON m.MedikamentenId = l_m.MedikamentenId
-LEFT JOIN Lager l ON l.LagerId = l_m.LagerId
-GROUP BY m.MedikamentenId, l.LagerId
-ORDER BY m.MedikamentenId;
+      m.Name AS medikament,
+      l.Ort AS Lagerort,
+      l.Kapazitaet AS max_kapazitaet,
+      COUNT(l_m.MedikamentenId) AS aktueller_bestand
+  FROM Medikament m
+  LEFT JOIN Lager_Medikament l_m ON m.MedikamentenId = l_m.MedikamentenId
+  LEFT JOIN Lager l ON l.LagerId = l_m.LagerId
+  GROUP BY m.MedikamentenId, l.LagerId
+  ORDER BY m.MedikamentenId;
     """
     
 
