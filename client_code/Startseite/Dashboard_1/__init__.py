@@ -11,16 +11,20 @@ class Dashboard_1(Dashboard_1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
 
     # Any code you write here will run before the form opens.
     daten_holen = anvil.server.call('patienten_pro_abteilung_anzeigen')
-
+    farben_balken = ["blue", "red", "green", "yellow", "orange", "grey", "purple"]
     x_labels = [row['Abteilungsname'] for row in daten_holen]
     y_values = [row['Anzahl'] for row in daten_holen]
     self.plot_patienten.data = [{
       'x': x_labels,
       'y': y_values,
-      'type': 'bar'
+      'type': 'bar',
+      "marker": {
+        'color':farben_balken
+      }
     }]
 
     self.plot_patienten.layout = {

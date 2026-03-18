@@ -49,6 +49,9 @@ class Startseite(StartseiteTemplate):
     self.data_grid_1.visible = True
     self.InformationenMedikament.visible = True
     abteilung_id = self.Drop_Down_Menu_Abteilungen.selected_value
+    self.zurueck.background = "black"
+    
+  
    
 
 

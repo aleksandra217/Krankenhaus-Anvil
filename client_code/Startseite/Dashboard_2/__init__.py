@@ -17,12 +17,17 @@ class Dashboard_2(Dashboard_2Template):
     x_labels = [row['medikament'] for row in daten_holen]
     y_values = [row['prozent'] for row in daten_holen]
 
+    farben_balken = ["blue", "red", "green", "yellow", "orange", "lighblue", "grey"]
     self.plot_1.data = [{
       "x": x_labels,
       "y": y_values,
-      "type": "bar"
+      "type": "bar",
+      "marker": {
+        'color':farben_balken
+      }
     }]
 
+    
     self.plot_1.layout = {
       'title': 'Lagerbestand der Medikamente (%)',
       'xaxis': {'title': 'Medikament'},
